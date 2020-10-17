@@ -1,0 +1,29 @@
+<div class="container">
+    {{ form_start(permissionsForm) }}
+        <table class="centered blue-grey darken-2 z-depth-1">
+            <thead class="blue-grey darken-4">
+            <tr>
+                <th>Identifiant</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for i in 0..pagePermissions|length-1 %}
+                    {% set choice = permissionsForm.permissions.vars.choices[i + (pagePermissions.getPaginationData.firstItemNumber-1) * (pagePermissions|length-1)] %}
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="checkbox" class="filled-in" id="{{ permissionsForm.permissions.vars.id~"_"~i }}"  name="{{ permissionsForm.permissions.vars.full_name~"[]" }}" value="{{ choice.value }}" {{ choice.value in rank.permissionsString ? 'checked="checked"' : '' }}/>
+                                <span class="white-text">{{ choice.value }}</span
+                            </label>
+                        </td>
+                        <td>{{ pagePermissions[i].perDescription }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {{ knp_pagination_render(pagePermissions) }}
+    {{ form_row(permissionsForm._token) }}
+    <button class="btn col s12 yellow darken-4 waves-effect waves-light margin-bottom">Enregistrer</button>
+    {{ form_end(permissionsForm, {'render_rest': false}) }}
+</div>

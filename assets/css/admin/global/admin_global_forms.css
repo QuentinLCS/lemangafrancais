@@ -1,0 +1,18 @@
+.input-field input {
+    color: #b5b5b5;
+    font-weight: bold;
+}
+
+ul.autocomplete-content span.highlight {
+    color: #2196F3;
+    font-weight: bold;
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
+    border: 2px solid #2196F3;
+    background-color: #2196F3;
+}
+
+[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
+    border: 2px solid #FFFFFF;
+}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title 'LeMangaFrancais | Lexicon' %}
+{% block body %}
+    <div class="row">
+        <div class="col s1"></div>
+        <div class=" col s10">
+            <div>
+                {{ form_start(searchForm) }}
+                <button class="hiddendiv"></button>
+                {{ form_end(searchForm) }}
+            </div>
+            <table class="striped #bbdefb blue lighten-4 ronded">
+                <thead>
+                <th><div class="centered" style="white-space: nowrap">{{ knp_pagination_sortable(pageLexicons, 'Nom', 'l.LexMot') }}</div></th>
+                <th><div class="centered">{{ knp_pagination_sortable(pageLexicons, 'Defintion', 'l.LexDefinition') }}</div></th>
+                </thead>
+                <tbody>
+                {% for mot in pageLexicons %}
+                    <tr>
+                        <td style="width: 25%; white-space: nowrap">{{ mot.lexMot }}</td>
+                        <td style="width: 75%; text-align: justify">{{ mot.lexDefinition }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div>{{ knp_pagination_render(pageLexicons) }}</div>
+        </div>
+
+        <div class="col s1"></div>
+    </div>
+{% endblock %}

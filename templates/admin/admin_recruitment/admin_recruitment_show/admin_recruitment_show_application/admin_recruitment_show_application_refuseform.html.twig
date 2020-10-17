@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('admin.application.refuse', {jobId:application.recrutement.id, slug: application.recrutement.slug, id:application.id}) }}" style="display: inline-block;" class="no-padding">
+    <input type="hidden" name="_method" value="REFUSE">
+    <input type="hidden" name="_token" value="{{ csrf_token('refuse' ~ application.id) }}">
+    <button class="btn orange darken-2 waves-effect waves-light tooltipped {{ application.canEtat|upper == 'REFUSED' ? 'disabled' : '' }}" data-position="top" data-tooltip="Supprimer"><strong>REFUSER</strong></button>
+</form>

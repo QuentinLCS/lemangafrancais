@@ -1,0 +1,13 @@
+<div class="container">
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+    <div class="row">
+        <button class="btn col {{ button == 'Ajouter' ? 's12 blue' : 's10 yellow darken-4' }} waves-effect waves-light margin-bottom">{{ button|default('Enregistrer') }}</button>
+        {{ form_end(form) }}
+        {% if button == 'Editer' %}
+            <div class="col s1 offset-s1">
+                {{ include('admin/admin_roles/admin_roles_deleteform.html.twig') }}
+            </div>
+        {% endif %}
+    </div>
+</div>

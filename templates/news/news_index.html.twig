@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | News' %}
+
+{% block body %}
+    <div class="grey lighten-4 center">
+        <h1>Les Actualités</h1>
+        <h6>Retrouvez toute l'actualité du Site et de l'univers Manga</h6>
+        <div class="hide-on-med-and-up">
+            {{ form_start(formsmall) }}
+            <h4>Recherche</h4>
+            {{ form_row(formsmall.titre) }}
+            <button class="hiddendiv"></button>
+            {{ form_end(formsmall) }}
+        </div>
+        <div class="row">
+            <div class="col s12 l7 offset-l1">
+                <div class="section left-align">
+                    <h5>Dernières Actualités</h5>
+                    <div class="divider"></div>
+                </div>
+                {% for actu in news %}
+                    <div class="col l6">
+                        <a href="{{ path('news.show', {id: actu.id}) }}">
+                            <div class="card hoverable waves-effect waves-block waves-blue" style="height: 500px">
+                                <div class="card-image">
+                                    <img src="{{ actu.newsPhotoNomFichier ? vich_uploader_asset(actu, 'newsPhotoFichier') : "/media/news/default.png" | imagine_filter('news_page') }}" alt="Image Article" style="width:100%; height: 250px">
+                                </div>
+                                <div class="card-content left-align " style="padding-bottom: 10px">
+                                    <div class="chip blue white-text">{{ actu.newsDateCreation|title }}</div>
+                                    <span class="span card-title">{{ actu.newsTitre }}</span>
+                                    <p>{{ actu.NewsContenu|truncate(300,false,"...")|raw }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+                <div class="pagination">
+                    {{ knp_pagination_render(news) }}
+                </div>
+            </div>
+            <div class="col s12 l3 hide-on-small-only">
+                <div class="section left-align">
+                    <h5 class="left-align">Archives</h5>
+                    <div class="divider"></div>
+                </div>
+                <div class="card-panel grey lighten-2">
+                    <h6>Recherche</h6>
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col s1">
+                            <button class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons right">search</i></button>
+                        </div>
+                        <div class="col s10 offset-m1">
+                            {{ form_row(form.titre) }}
+                        </div>
+                    </div>
+                    <button class="hiddendiv"></button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('input.autocomplete').autocomplete({
+            data: {
+                {% for actu in news %}
+                "{{ actu.newsTitre }}": null,
+                {% endfor %}
+            },
+        });
+    </script>
+{% endblock %}

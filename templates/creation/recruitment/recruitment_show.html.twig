@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Recrutement' %}
+
+{% block body %}
+    <div class="container big-margin-top big-margin-bottom grey lighten-4" style="margin-top: 5%;">
+        <h4 class="center"><strong>RECHERCHE DE {{ job.role.rolNom|upper }}S !</strong></h4>
+        <div class="center" style="margin-top: 5%; margin-bottom: -25%;">
+            <img height="" src="{{ job.recImageNomFichier ? vich_uploader_asset(job, 'recImageFichier') : "/media/recruitment/default.jpg" | imagine_filter('news_page') }}" alt="Image Recrutement" class=" z-depth-3 rounded" style=" height: 50%; width: 50%; margin-top: 0">
+        </div>
+        <div class="white z-depth-3 rounded">
+            <div class="container" style="padding-top: 25%">
+                {{ job.recContenu|raw }}
+            </div>
+            <div class="center">
+                {% if app.user %}
+                    <a href="{{ path('recruitment.apply', {id:job.id, slug: job.slug}) }}" target="_blank" class="btn blue waves-effect waves-light margin-bottom"><strong>POSTULER A CE POSTE !</strong></a>
+                {% else %}
+                    <a href="{{ path('signin') }}"><div class="red lighten-4 red-text text-darken-3 center margin-bottom info-msg">Connectez-vous pour postuler !</div></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

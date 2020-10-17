@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h3 class="center-align">Rôles disponibles <small class="blue-grey-text">Total : {{ pageRanks.getTotalItemCount }}</small></h3>
+        <div>
+            {{ form_start(searchForm) }}
+                <button class="hiddendiv"></button>
+            {{ form_end(searchForm) }}
+        </div>
+        <table class="centered blue-grey darken-2 z-depth-1">
+            <thead class="blue-grey darken-4">
+            <tr>
+                <th>{{ knp_pagination_sortable(pageRanks, 'Puissance', 'r.id') }}</th>
+                <th>{{ knp_pagination_sortable(pageRanks, 'Nom', 'r.rolNom') }}</th>
+                <th>Description</th>
+                <th>Gestion</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for rank in pageRanks %}
+                <tr>
+                    <td>{{ rank.id }}</td>
+                    <td style="color: {{ rank.rolCouleur }}">{{ rank.rolNom }}</td>
+                    <td>{{ rank.rolDescription }}</td>
+                    <td>
+                        <a href="{{ path('admin.roles.show', {id: rank.id, slug: rank.slug}) }}" class="waves-effect waves-light btn yellow accent-4 tooltipped" data-position="top" data-tooltip="Afficher les détails"><i class="material-icons white-text">remove_red_eye</i></a>
+                        {{ include('admin/admin_roles/admin_roles_deleteform.html.twig') }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(pageRanks) }}
+
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large blue pulse modal-trigger tooltipped" data-position="left" data-tooltip="Ajouter un rôle" href="#ajouter">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
+        {{ include('admin/admin_roles/admin_roles_addform.html.twig') }}
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        {% for message in app.flashes('notif') %}
+            M.toast({html: '{{ message }}'})
+        {% endfor %}
+
+        $('input.autocomplete').autocomplete({
+            data: {
+                {% for rank in allRanks %}
+                    "{{ rank.rolNom }}": null,
+                {% endfor %}
+            },
+        });
+    </script>
+{% endblock %}

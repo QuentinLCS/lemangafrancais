@@ -1,0 +1,8 @@
+<form method="post" action="{{ path('usersScenario.deleteScenario', {'utilisateur': user.id,'scenario': scenario.id}) }}" style="display: inline-block;" class="no-padding">
+    <div>
+        <h3>Êtes-vous sûr de vouloir supprimer ce scénario ?</h3>
+    </div>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ scenario.id) }}">
+    <button class="waves-effect waves-light btn red darken-4 tooltipped" data-position="top" data-tooltip="Supprimer"><i class="material-icons white-text">delete</i></button>
+</form>

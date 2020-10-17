@@ -1,0 +1,19 @@
+<div class="col xl3 s12">
+    <div class="card blue-grey darken-2">
+        <div class="card-image">
+            <img src="{{ job.recImageNomFichier ? vich_uploader_asset(job, 'recImageFichier') : "/media/recruitment/default.jpg" | imagine_filter('avatarmedium') }}" alt="Image de recrutments">
+            <span class="col s12 card-title blue-grey darken-4 center-align" style="text-indent: 20px; color: {{ job.role.rolCouleur }}"><strong>{{ job.role.rolnom }}</strong></span>
+        </div>
+        <div class="card-content">
+            <ul>
+                <li><strong>Responsable :</strong> {{ job.utilisateur.id }}</li>
+                <li><strong>Ouverture :</strong> {{ job.recDateString }}</li>
+                <li><strong>Fermeture :</strong> {{ job.recDateFinString }}</li>
+                <li><strong>Candidatures :</strong> {{ job.candidatures|length }}</li>
+            </ul>
+        </div>
+        <div class="card-action center">
+            <a>{{ job.recEtat }}</a>
+        </div>
+    </div>
+</div>

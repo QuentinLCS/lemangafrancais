@@ -1,0 +1,35 @@
+.datepicker-calendar-container {
+    background-color: #455A64;
+    color: white;
+}
+
+.datepicker-controls, .datepicker-day-button:active, .datepicker-day-button:focus {
+    background-color: #37474F;
+}
+
+.datepicker-date-display, .month-next:active, .month-prev:active, .month-next:focus, .month-prev:focus {
+    background-color:#263238;
+}
+
+.is-selected .datepicker-day-button {
+    background-color: var(--main-blue-color);
+}
+
+.confirmation-btns .datepicker-done, .dropdown-content .selected span {
+    color: var(--main-blue-color);
+}
+
+.confirmation-btns .datepicker-cancel {
+    color: var(--main-orange-color);
+}
+
+.dropdown-content {
+    max-height: 200px;
+}
+
+.dropdown-content li, .dropdown-content .selected, .dropdown-content li span {
+    background-color: #37474F;
+    color: white;
+    border: none;
+    outline: none;
+}

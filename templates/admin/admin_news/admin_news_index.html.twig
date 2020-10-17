@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h3 class="center-align">Articles publiés <small class="blue-grey-text">Total : {{ pageNews.getTotalItemCount }}</small></h3>
+
+        <table class="centered blue-grey darken-2 z-depth-1">
+            <thead class="blue-grey darken-4">
+                <tr>
+                    <th>{{ knp_pagination_sortable(pageNews, 'Titre', 'n.newsTitre') }}</th>
+                    <th>  {# {{  knp_pagination_sortable(pageNews, 'Auteur', 'n.utilisateurs') }}#}  </th>
+                    <th>{{ knp_pagination_sortable(pageNews, 'Date création', 'n.newsDateCreation') }}</th>
+                    <th>{{ knp_pagination_sortable(pageNews, 'Dernière modification', 'n.newsDateDerniereModif') }}</th>
+                    <th>Gestion</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {%  for news in pageNews  %}
+                <tr>
+                    <td>{{ news.newsTitre }}</td>
+                    <td> {# {%  for auteur in news.utilisateurs  %}
+                    {{ auteur.id }}
+                    {%  endfor %} #}</td>
+                    <td>{{ news.newsDateCreation }}</td>
+                    <td>{{ news.newsDateDerniereModif }}</td>
+                    <td>
+                        <a href="{{ path('admin.news.show',{id: news.id}) }}" class="waves-effect waves-light btn yellow accent-4 tooltipped" data-position="top" data-tooltip="Modifier la publications"><i class="material-icons white-text">remove_red_eye</i></a>
+                        <form action="{{ path('admin.news.delete', {id: news.id}) }}" onsubmit=" return confirm('Êtes vous vraiment sûr de vouloir supprimer cet article ?')" method="POST" style="display: inline-block;" class="no-padding">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ news.id) }}">
+                            <button class="btn red darken-4 waves-effect waves-light tooltipped" data-position="top" data-tooltip="Supprimer"><i class="material-icons white-text">delete</i></button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(pageNews) }}
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large blue modal-trigger pulse" href="{{ path('admin.news.new') }}">
+            <i class="large material-icons">edit</i>
+        </a>
+    </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        {% for message in app.flashes('notif') %}
+            M.toast({html: '{{ message }}'})
+        {% endfor %}
+    </script>
+{% endblock %}

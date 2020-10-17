@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Users' %}
+
+{% block body %}
+    <h3 class="center-align">Utilisateurs inscrits</h3>
+    <section class="container white rounded z-depth-4 margin-bottom">
+        <div class="container">
+            <div>
+                {{ form_start(searchForm) }}
+                <div class="row">
+                    <div class="col s8">{{ form_row(searchForm.pseudonyme) }}</div>
+                    <div class="col s4">{{ form_row(searchForm.roles) }}</div>
+                </div>
+                <button class="hiddendiv"></button>
+                {{ form_end(searchForm) }}
+            </div>
+            <table class="centered striped highlight">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>{{ knp_pagination_sortable(pageUsers, 'Pseudonyme', 'u.utiPseudo') }}</th>
+                    <th>Role.s</th>
+                    <th>{{ knp_pagination_sortable(pageUsers, 'Dernière connexion', 'u.utiDerniereSession') }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in pageUsers %}
+                    <tr>
+                        <td>
+                            <a href="{{ path("users.show", {id:user.id}) }}">
+                                <img height="50" width="50" class="circle" src="{{ user.utiAvatarNomFichier ? vich_uploader_asset(user, 'utiAvatarFichier') : "/media/users/avatar/default.jpg" | imagine_filter('avatar') }}" alt="Image">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="black-text" href="{{ path("users.show", {id:user.id}) }}">
+                                {{ user.id }}
+                            </a>
+                        </td>
+                        <td>
+                            {% for role in user.utiRoles %}
+                                <span style="color: {{ role.rolCouleur }}">{{ role.rolNom }}</span>
+                            {% endfor %}
+                        </td>
+                        <td>{{ user.utiDerniereSessionString }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {{ knp_pagination_render(pageUsers) }}
+        </div>
+    </section>
+{% endblock %}

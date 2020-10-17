@@ -1,0 +1,22 @@
+<h4>Connexion</h4>
+<form action="{{ path('signin') }}" method="post">
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="focus">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="_password">
+        </div>
+    </div>
+    {% if last_error %}
+        <div class="red lighten-4 red-text text-darken-3">
+            <strong>{{ last_error.messageKey() | trans(last_error.messagedata, 'security') }}</strong>
+        </div>
+    {% endif %}
+    <button type="submit" class="btn blue waves-effect waves-light col s12">Se connecter</button>
+</form>
+<div class="center"><a href="{{ path('signup') }}">Créer un compte</a></div>

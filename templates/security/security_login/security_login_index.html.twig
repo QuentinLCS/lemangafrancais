@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | ' ~ current_page %}
+
+{% block mainParameters %}
+    class="center"
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="container big-margin-top col l6 m8 s10 push-l3 push-m2 push-s1">
+            <h3 class="margin-bottom">Le<strong class="orange-text">Manga</strong>Français</h3>
+            <div class="card-panel hoverable">
+                {{ include('security/security_login/security_login_' ~ current_page ~ '.html.twig') }}
+            </div>
+            {% if current_page == 'signup' %}
+                <p class="">En cliquant sur Inscription, vous acceptez nos Conditions générales. Découvrez comment nous recueillons, utilisons et partageons vos données en lisant notre Politique d’utilisation des données et comment nous utilisons les cookies et autres technologies similaires en consultant notre Politique d’utilisation des cookies. Vous recevrez peut-être des notifications par texto de notre part et vous pouvez à tout moment vous désabonner.</p>
+            {% endif %}
+        </div class="container col l6 m8 s10 push-l3 push-m2 push-s1">
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% for message in app.flashes('notif') %}
+        <script>M.toast({html: '{{ message }}'})</script>
+    {% endfor %}
+{% endblock %}

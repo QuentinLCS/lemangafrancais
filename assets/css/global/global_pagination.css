@@ -1,0 +1,13 @@
+ul.pagination a {
+    color: #455A64;
+}
+
+.pagination .disabled i {
+    color: #b5b5b5;
+}
+
+.pagination .active a {
+    background-color: #2196F3;
+    border: solid #2196F3;
+    color: white;
+}

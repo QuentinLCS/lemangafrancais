@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <section class="row">
+        {{ include('admin/admin_users/admin_users_show/admin_users_show_infos.html.twig') }}
+        <div class="col xl9 s12">
+            <ul class="tabs blue-grey darken-4 z-depth-1">
+                <li class="tab col s3"><a class="active" href="#page1">Sanctions</a></li>
+                <li class="tab col s3"><a href="#page2">Activités</a></li>
+                <li class="tab col s3"><a href="#page3">Achats</a></li>
+                <li class="tab col s3"><a href="#page4">Editer</a></li>
+            </ul>
+            <div id="page1" class="col s12 blue-grey darken-2 z-depth-1">{{ include('admin/admin_users/admin_users_show/admin_users_show_sanctions.html.twig') }}</div>
+            <div id="page2" class="col s12 blue-grey darken-2 z-depth-1">{{ include('admin/admin_users/admin_users_show/admin_users_show_activities.html.twig') }}</div>
+            <div id="page3" class="col s12 blue-grey darken-2 z-depth-1">{{ include('admin/admin_users/admin_users_show/admin_users_show_purchases.html.twig') }}</div>
+            <div id="page4" class="col s12 blue-grey darken-2 z-depth-1">{{ include('admin/admin_users/admin_users_show/admin_users_show_edit.html.twig') }}</div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% for message in app.flashes('notif') %}
+        <script>M.toast({html: '{{ message }}'})</script>
+    {% endfor %}
+{% endblock %}

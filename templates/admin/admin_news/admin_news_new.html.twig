@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col l12 s15 margin-top center">
+            <div class="col s12 blue-grey darken-2 z-depth-1">
+                <div class="container">
+                    <h1>Créer un nouvel article</h1>
+
+                    {{  include ('admin/admin_news/admin_news_form.html.twig', {form: form, button: 'Créer'}) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

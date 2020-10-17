@@ -1,0 +1,8 @@
+<div class="container">
+    <p class="justify">{{ user.utiBiographie }}</p>
+    <ul>
+        <li><strong>Age : </strong> {{ user.utiNaissance ? user.utiNaissance.diff(date('now'|date())).y : '???' }} ans</li>
+        <li><strong>Dernière connexion : </strong> {{ user.utiDerniereSessionString }}</li>
+        <li><strong>Inscription : </strong> {{ user.utiInscriptionString }}</li>
+    </ul>
+</div>

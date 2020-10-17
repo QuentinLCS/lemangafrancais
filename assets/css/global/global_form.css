@@ -1,0 +1,51 @@
+form {
+    padding: 40px 0 0 0;
+}
+
+ul li.error {
+    margin: -10px 0 -60px 0;
+    color: red;
+    overflow: hidden;
+}
+
+.modal-close{
+    position: absolute;
+    top:10px;
+    right:10px;
+    padding:0;
+    margin:0;
+}
+
+.input-field label {
+    color: #929292;
+    overflow-x: hidden;
+}
+
+.input-field input:focus + label {
+    color: #b5b5b5 !important;
+}
+
+.input-field input:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid var(--main-blue-color) !important;
+    box-shadow: 0 1px 0 0 var(--main-blue-color) !important;
+}
+
+.input-field input.valid {
+    border-bottom: 1px solid var(--main-blue-color);
+    box-shadow: 0 1px 0 0 var(--main-blue-color);
+}
+
+.input-field input.invalid {
+    border-bottom: 1px solid #b10900;
+    box-shadow: 0 1px 0 0 #b10900;
+}
+
+.input-field .prefix.active {
+    color: var(--main-blue-color);
+}
+
+@media screen and (max-width: 600px) {
+    ul li.error {
+        margin-bottom: 0;
+    }
+}

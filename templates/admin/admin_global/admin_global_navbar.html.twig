@@ -1,0 +1,71 @@
+<nav class="nav-extended z-depth-3">
+    <div class="nav-wrapper blue-grey darken-4">
+        <a href="{{ path('home') }}" class="brand-logo center">Le<strong class="orange-text ">Manga</strong>Francais</a>
+        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+<ul id="mobile" class="sidenav sidenav-fixed z-depth-4 blue-grey darken-4 no-padding">
+
+    <li>
+        {{ include('global/global_navbar/global_navbar_userinfos.html.twig') }}
+    </li>
+
+    <li><a class="waves-effect waves-light" href="{{ path('admin.index') }}"><i class="material-icons white-text">dashboard</i>Tableau de bord</a></li>
+
+    <li><div class="divider"></div></li>
+
+    <li><a class="subheader blue-grey-text lighten-5">Outils de gestion</a></li>
+
+    <li>
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header waves-effect waves-light">Utilisateurs<i class="material-icons white-text">person</i></a>
+                <div class="collapsible-body blue-grey darken-3">
+                    <ul>
+                        <li><a href="{{ path('admin.users.index') }}" class="waves-effect waves-light">Afficher la liste</a></li>
+                        <li><a href="{{ path('admin.roles.index') }}" class="waves-effect waves-light">Rôles</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a class="collapsible-header waves-effect waves-light">Publications<i class="material-icons white-text">message</i></a>
+                <div class="collapsible-body blue-grey darken-3">
+                    <ul>
+                        <li><a href="{{ path('admin.news.index') }}" class="waves-effect waves-light">Articles officiels</a></li>
+                        <li><a href="{{ path('admin.posts.index') }}" class="waves-effect waves-light">Toutes les publications</a></li>
+                        <li><a href="{{ path('admin.reports.index') }}" class="waves-effect waves-light">Gérer les reports</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a class="collapsible-header waves-effect waves-light">Retours<i class="material-icons white-text">call</i></a>
+                <div class="collapsible-body blue-grey darken-3">
+                    <ul>
+                        <li><a href="{{ path('admin.help.index') }}" class="waves-effect waves-light">Questions posées</a></li>
+                        <li><a href="{{ path('admin.suggestions.index') }}" class="waves-effect waves-light">Suggestions apportées</a></li>
+                        <li><a href="{{ path('admin.bugs.index') }}" class="waves-effect waves-light">Problèmes rapportés</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ path('admin.recruitment.index') }}" class="waves-effect waves-light">Recrutements</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a class="collapsible-header waves-effect waves-light">Divers<i class="material-icons white-text">bubble_chart</i></a>
+                <div class="collapsible-body blue-grey darken-3">
+                    <ul>
+                        <li><a href="{{ path('admin.lexicon.index') }}" class="waves-effect waves-light">Lexique</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a class="red white-text waves-effect waves-light" href="{{ path('signout') }}"><i class="material-icons white-text">close</i><strong>SE DECONNECTER</strong></a>
+            </li>
+        </ul>
+    </li>
+
+</ul>

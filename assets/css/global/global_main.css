@@ -1,0 +1,85 @@
+body {
+    background-color: #f5f5f5;
+    --main-orange-color: #FF9800;
+    --main-blue-color: #2196f3;
+    overflow-x: hidden;
+    text-align: justify;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+    display:block;
+    font-size: 0.7em;
+}
+
+.small-opacity {
+    opacity: 25%;
+}
+
+.medium-opacity {
+    opacity: 50%;
+}
+
+.collapsible-header {
+    text-indent: 15px;
+}
+
+.big-margin-top {
+    margin-top: 100px;
+}
+
+.margin-top {
+    margin-top: 30px;
+}
+
+.small-margin-top {
+    margin-top: 15px;
+}
+
+.big-margin-bottom {
+    margin-bottom: 100px;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
+
+.small-margin-bottom {
+    margin-bottom: 15px;
+}
+
+.margin-left {
+    margin-left: 30px;
+}
+
+.small-margin-left {
+    margin-left: 15px;
+}
+
+.margin-right {
+    margin-right: 30px;
+}
+
+.small-margin-right {
+    margin-right: 15px;
+}
+
+.collection {
+    border: none;
+    margin: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.rounded {
+    border-radius:10px;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.info-msg {
+    line-height: 50px;
+}

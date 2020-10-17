@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais' %}
+
+{% block body %}
+    <div class="container big-margin-top big-margin-bottom grey lighten-4 center" style="margin-top: 5%;">
+        <h4><strong>{{ actu.newsTitre|upper }}</strong></h4>
+        <div class="center" style="margin-top: 5%; margin-bottom: -25%;">
+            <img src="{{ actu.newsPhotoNomFichier ? vich_uploader_asset(actu, 'newsPhotoFichier') : "/media/news/default.png" | imagine_filter('news_page') }}" alt="Image Article" class=" z-depth-3 rounded" style=" height: 50%; width: 50%; margin-top: 0%;">
+        </div>
+        <div class="white z-depth-3 rounded">
+            <div class="container margin-bottom" style="padding-top: 25%; padding-bottom: 10%;">
+                <p style="text-align: justify; margin-top: 5%;" class="justify">{{ actu.newsContenu|raw }}</p>
+            </div>
+        </div>
+    </div>
+    <div class=" container">
+        {{ form_start(form) }}
+        {{ form_row (form.content, {'attr': {'placeholder': "Donnez-nous votre avis ... ☻", 'rows': '12','cols': '100'}}) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

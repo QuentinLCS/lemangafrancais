@@ -1,0 +1,56 @@
+<nav class="nav-extended z-depth-3">
+    <div class="nav-wrapper white">
+        <a {{ current_page != 'home' ? 'href=' ~ path('home') }} class="brand-logo center black-text">Le<strong class="orange-text ">Manga</strong>Francais</a>
+        <a href="#" data-target="mobile" class="sidenav-trigger black-text hide-on-large-only"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            {% if app.user %}
+                <li class="yellow-text text-darken-2 valign-wrapper"><strong>{{ app.user.utiTokens }}</strong> <img src="{{ asset("media/store/token.svg") }}" alt="tokens" height="20" class="right"></li>
+            {% endif %}
+            <li><a class="blue" href="#store"><i class="material-icons">shopping_cart</i></a></li>
+            <li>
+                {% if app.user %}
+                    <a class="dropdown-trigger orange valign-wrapper row" href="{{ path('users.show', {id: app.user.id}) }}" data-target="profile">
+                        <img height="50" width="50" src="{{ app.user.utiAvatarNomFichier ? vich_uploader_asset(app.user, 'utiAvatarFichier') : "/media/users/avatar/default.jpg" | imagine_filter('avatar') }}" alt="Profile picture" class="circle">
+                        <strong class="flow-text center col s10">{{ app.user.id|upper }}</strong>
+                        <i class="material-icons col s2">more_vert</i>
+                    </a>
+                {% else %}
+                    <a class="orange" href="{{ path('signin') }}"><strong>SE CONNECTER</strong></a>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+    <div class="nav-content hide-on-small-and-down">
+        <ul class="tabs tabs-fixed-width grey lighten-4">
+            <li class="tab">
+                <a href="{{ path('news.index') }}" {{ current_page == 'news' ? 'class="active"' : 'target="_top"' }}>News</a>
+            </li>
+            <li class="tab">
+                <a class="dropdown-trigger {{ current_page == 'scenario' or current_page == 'manga' or current_page == 'illustration' or current_page == 'recruitment' ? 'active' }}" href="#" data-target="creations">Créations</a>
+            </li>
+            <li class="tab">
+                <a href="{{ path('home') }}" class="index-button {{ current_page == 'home' or current_page == null ? 'active"' : current_page == 'signin' or current_page == 'signup' ? 'active" target="_top"' : '" target="_top"' }}><i class="material-icons">home</i></a>
+            </li>
+            <li class="tab">
+                <a href="{{ path('lexicon.index') }}" {{ current_page == 'lexicon' ? 'class="active"' : 'target="_top"' }}>Lexique</a>
+            </li>
+            <li class="tab">
+                <a href="{{ path('support.index') }}" {{ current_page == 'support' ? 'class="active"' : 'target="_top"' }}>Support</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<ul id="creations" class="dropdown-content">
+    <li><a {{ current_page != 'manga' ? 'href=' ~ path('manga.index') }}>Mangas</a></li>
+    <li><a {{ current_page != 'illustration' ? 'href=' ~ path('illustration.index') }}>Illustrations</a></li>
+    <li><a {{ current_page != 'scenario' ? 'href=' ~ path('scenario.index') }}>Scénarios</a></li>
+    <li class="divider"></li>
+    <li><a {{ current_page != 'recruitment' ? 'href=' ~ path('recruitment.index') }}>Recrutement</a></li>
+</ul>
+
+{{ include('global/global_navbar/global_navbar_sidebar.html.twig') }}
+
+{% if app.user %}
+    {{ include('global/global_navbar/global_navbar_profile.html.twig') }}
+{% endif %}

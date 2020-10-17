@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title 'LeMangaFrancais | Illustrations' %}
+{% block body %}
+    <div class="grey lighten-4 center">
+        <h1>Les Mangas</h1>
+        <h6>Retrouvez les derniers Manga publiés</h6>
+        <div class="row">
+            <div class="col l7 offset-l1">
+                <div class="section left-align">
+                    <h5>Derniers Manga</h5>
+                    <div class="divider"></div>
+                </div>
+                {% for page in manga %}
+                    <div class="col l6 left-align">
+                        <a href="{{ path('manga.show', { id: page.id}) }}">
+                            <div class="card horizontal">
+                                <div class="card-image">
+                                    <img src="{{ '/media/illustrations/default.png' | imagine_filter('illustration_page') }}" alt="Image Illustration" style="width:300px; height: 100%">
+                                </div>
+                                <div class="card-stacked">
+                                    <div class="card-content">
+                                        <div class="chip blue white-text">{{ page.manDateCreation|title }}</div>
+                                        <span class="span card-title" style="word-break: break-word;">{{ page.manTitre }}<br>par
+                                            {% for utilisateur in page.utilisateur %}
+                                                <span class="orange-text">{{ utilisateur.id }}</span>
+                                            {% endfor %}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

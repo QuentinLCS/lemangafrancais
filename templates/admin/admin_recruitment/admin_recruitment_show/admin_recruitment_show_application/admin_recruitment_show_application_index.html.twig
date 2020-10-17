@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <section class="row">
+        {{ include('admin/admin_recruitment/admin_recruitment_show/admin_recruitment_show_application/admin_recruitment_show_application_infos.html.twig') }}
+        <div class="col xl9 s12">
+            <div id="page1" class="col s12 blue-grey darken-2 z-depth-1">{{ include('admin/admin_recruitment/admin_recruitment_show/admin_recruitment_show_application/admin_recruitment_show_application_content.html.twig') }}</div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% for message in app.flashes('notif') %}
+        <script>M.toast({html: '{{ message }}'})</script>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,27 @@
+<div id="ajouter" class="modal">
+    <h5 class="modal-close">&#10005;</h5>
+    <div class="modal-content center blue-grey darken-3">
+        <h4>Ajouter un recrutement</h4>
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col s12">
+                    {{ form_row(form.role) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    {{ form_row(form.recDateString) }}
+                </div>
+                <div class="col s6">
+                    {{ form_row(form.recDuree) }}
+                </div>
+            </div>
+            {{ form_row(form._token) }}
+            <div class="row">
+                <button class="btn col s12 blue waves-effect waves-light margin-bottom">AJOUTER</button>
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
+        </div>
+    </div>
+</div>

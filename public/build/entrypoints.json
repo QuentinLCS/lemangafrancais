@@ -1,0 +1,33 @@
+{
+  "entrypoints": {
+    "global": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~global~home.js",
+        "/build/global.js"
+      ],
+      "css": [
+        "/build/global.css"
+      ]
+    },
+    "home": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~global~home.js",
+        "/build/home.js"
+      ],
+      "css": [
+        "/build/home.css"
+      ]
+    },
+    "admin": {
+      "js": [
+        "/build/runtime.js",
+        "/build/admin.js"
+      ],
+      "css": [
+        "/build/admin.css"
+      ]
+    }
+  }
+}

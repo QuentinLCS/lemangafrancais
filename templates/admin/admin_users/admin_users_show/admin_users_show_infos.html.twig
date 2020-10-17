@@ -1,0 +1,29 @@
+<div class="col xl3 s12">
+    <div class="card blue-grey darken-2">
+        <div class="card-image">
+            <img src="{{ user.utiAvatarNomFichier ? vich_uploader_asset(user, 'utiAvatarFichier') : "/media/users/avatar/default.jpg" | imagine_filter('avatarmedium') }}" alt="Image de profile">
+            <span class="col s12 card-title blue-grey darken-4 center-align"><strong>{{ user.id }}</strong></span>
+        </div>
+        <div class="card-content">
+            <p>{{ user.utiBiographie }}</p>
+            <ul>
+                <li><strong>Rôle.s :</strong>
+                    <ul>
+                        {% for role in user.utiRoles %}
+                            <li style="text-indent: 20px; color: {{ role.rolCouleur }}">- {{ role.rolNom }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><strong>Inscription :</strong> {{ user.utiInscriptionString }}</li>
+                <li><strong>Tokens :</strong> {{ user.utiTokens }}</li>
+                <li><strong>Dernière connexion :</strong> {{ user.utiConnecte ? 'Connecté' : user.utiDerniereSessionString}}</li>
+                <li><strong>Nationalité :</strong> {{ user.lanId }}</li>
+                <li><strong>Naissance :</strong> {{ user.utiNaissanceString }}</li>
+                <li><strong>Téléphone :</strong> {{ user.utiTelephone }}</li>
+            </ul>
+        </div>
+        <div class="card-action">
+            <a href="mailto:{{ user.utiMail }}">{{ user.utiMail }}</a>
+        </div>
+    </div>
+</div>

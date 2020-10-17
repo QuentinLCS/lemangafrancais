@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <!-- Stat Boxes -->
+        <div class="row white-text">
+            <div class="col l3 s6">
+                <div class="card-panel teal hoverable">
+                    <table>
+                        <tr>
+                            <td>
+                                <h3>{{ nbUsers }}</h3>
+                                <span>Inscrits</span>
+                            </td>
+                            <td>
+                                <i class="material-icons large right">person_add</i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col l3 s6">
+                <div class="card-panel deep-purple hoverable">
+                    <table>
+                        <tr>
+                            <td>
+                                <h3>NaN</h3>
+                                <span>Visiteurs</span>
+                            </td>
+                            <td>
+                                <i class="material-icons large right">remove_red_eye</i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col l3 s6">
+                <div class="card-panel pink darken-4 hoverable">
+                    <table>
+                        <tr>
+                            <td>
+                                <h3>{{ nbPosts }}</h3>
+                                <span>Publications</span>
+                            </td>
+                            <td>
+                                <i class="material-icons large right">message</i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col l3 s6">
+                <div class="card-panel deep-orange darken-4 hoverable">
+                    <table>
+                        <tr>
+                            <td>
+                                <h3>NaN</h3>
+                                <span>Euros</span>
+                            </td>
+                            <td>
+                                <i class="material-icons large right">euro</i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="chart_div" class="col l6 s12 z-depth-1 no-padding"></div>
+            <div id="linechart_material" class="col l6 s12 z-depth-1 no-padding"></div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin') }}
+{% endblock %}

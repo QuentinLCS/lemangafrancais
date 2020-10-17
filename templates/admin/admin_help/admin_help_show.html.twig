@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col l12 s15 margin-top">
+            <div class="col s12 blue-grey darken-2 z-depth-1">
+                <div class="container">
+                    <div class="center"><h3>Questions posées</h3></div>
+                    <h5>Sujet : {{ question.sujet }}</h5>
+                    <div class="col s12 blue-grey darken-1 z-depth-1 margin-bottom">{{ question.contenu | raw}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

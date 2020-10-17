@@ -1,0 +1,15 @@
+{% if current_page == 'signup' %}
+        <h4>Créer un compte</h4>
+        <p>Créer, partager, s'informer... Toi aussi inscris toi afin de bénéficier de tous ces avantages !</p>
+{% endif %}
+{{ form_start(addForm) }}
+        <div class="row">
+                <div class="col m6 s12">{{ form_row(addForm.id) }}</div>
+                <div class="col m6 s12">{{ form_row(addForm.utiIdParrainer) }}</div>
+        </div>
+        {{ form_rest(addForm) }}
+        <button class="btn blue waves-effect waves-light col s12">Créer cet utilisateur</button>
+{{ form_end(addForm) }}
+{% if current_page == 'signup' %}
+        <p class="center"><a href="{{ path('signin') }}">Déjà un compte ? Connecte-toi !</a></p>
+{% endif %}

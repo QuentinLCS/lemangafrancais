@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Recruitment' %}
+
+{% block body %}
+    <section class="container">
+        <h5 class="margin-top small-margin-bottom"><strong class="grey-text text-darken-1">RECRUTEMENTS OFFICIELS</strong></h5>
+        {% if officialJobs %}
+            <div class="row white-text">
+                {% for job in officialJobs %}
+
+                    <a href="{{ path('recruitment.show', {id:job.id, slug: job.slug}) }}">
+                        <img height="250px" width="500px" class="col s{{ officialJobs|length > 1 ? (officialJobs|length > 2 ? '4' : '6'): '12'}} l{{ officialJobs|length > 1 ? '6' : '12'}}" src="{{ job.recImageNomFichier ? vich_uploader_asset(job, 'recImageFichier') : "/media/recruitment/default.jpg" | imagine_filter('vignette') }}" alt="Recruitment image">
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="red lighten-4 red-text text-darken-3 center margin-bottom info-msg">Aucun recrutement officiel pour le moment ! :(</div>
+        {% endif %}
+
+        <div class="margin-bottom">
+            <h5 class="margin-top small-margin-bottom"><strong class="grey-text text-darken-1">RECRUTEMENTS COMMUNAUTAIRES</strong></h5>
+            {% if otherJobs %}
+                {% for job in otherJobs %}
+                    <div class="small-margin-bottom">
+                        <a href="{{ path('recruitment.show', {id:job.id, slug: job.slug}) }}">
+                            <div class="row s10 white z-depth-2 rounded black-text">
+                                <div class="col s1">
+                                    <img src="{{ job.utilisateur.utiAvatarFichier ? vich_uploader_asset(job.utilisateur, 'utiAvatarFichier') : "/media/users/avatar/default.jpg" | imagine_filter('avatar') }}" alt="Image de profile">
+                                </div>
+                                <div class="col s11">
+                                    <p>
+                                        <strong>Recherche de {{ job.role.rolNom }}s !</strong> - {{ job.utilisateur.id }}<br>
+                                        {{ job.recResume ? job.recResume : 'Je recherche des personnes motivées !' }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="red lighten-4 red-text text-darken-3 center margin-bottom info-msg">Aucun recrutement communautaire ouvert...</div>
+            {% endif %}
+        </div>
+
+
+    </section>
+{% endblock %}

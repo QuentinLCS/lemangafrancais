@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <section class="row">
+        <div class="col s12">
+            <h3 class="center-align" style="color: {{ rank.rolCouleur }}">{{ rank.rolNom }} <small class="blue-grey-text">{{ rank.rolDescription }}</small></h3>
+            <ul class="tabs blue-grey darken-4 z-depth-1">
+                <li class="tab col s6"><a href="#page1">Permissions</a></li>
+                <li class="tab col s6"><a href="#page2">Editer</a></li>
+            </ul>
+            <div id="page1" class="col s12 blue-grey darken-2 z-depth-1">{{ include('admin/admin_roles/admin_roles_show/admin_roles_show_permissions.html.twig') }}</div>
+            <div id="page2" class="col s12 blue-grey darken-2 z-depth-1">{{ include('admin/admin_roles/admin_roles_show/admin_roles_show_edit.html.twig') }}</div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        {% for message in app.flashes('notif') %}
+            M.toast({html: '{{ message }}'})
+        {% endfor %}
+    </script>
+{% endblock %}

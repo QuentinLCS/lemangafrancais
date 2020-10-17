@@ -1,0 +1,7 @@
+<div>{{ form_start(form) }}
+    {{ form_rest(form) }}
+    {% if news.newsPhotoNomFichier %}
+        <img src="{{ vich_uploader_asset(news,'newsPhotoFichier') | imagine_filter('news_admin') }}" alt="card-img-top"style="margin-right: 500px" >
+    {% endif %}
+    <button class="waves-effect waves-light yellow darken-4 btn margin-bottom" type="submit" >{{  button|default('Enregistrer') }}</button>
+    {{ form_end(form) }}</div>

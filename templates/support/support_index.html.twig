@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Support' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <section>
+    <h3 class="center-align">F A Q</h3>
+    <div>
+        {% for question in faq %}
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">{{ question.question }}<i class="material-icons right">arrow_drop_down</i></div>
+                    <div class="collapsible-body"><i class="material-icons">question_answer</i> <span>   {{ question.reponse }}</span></div>
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form_start(form) }}
+        <h5>Une question à soumettre ? Pose là ici !</h5>
+            {{ form_rest(form)  }}
+            <button class="waves-effect waves-light yellow darken-4 btn margin-bottom" type="submit" >{{  button|default('Enregistrer') }}</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        {% for message in app.flashes('notif') %}
+            M.toast({html: '{{ message }}'})
+        {% endfor %}
+    </script>
+{% endblock %}

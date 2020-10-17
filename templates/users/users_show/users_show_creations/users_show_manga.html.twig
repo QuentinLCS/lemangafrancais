@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Manga' %}
+{%  block body %}
+    <div class="grey lighten-4 center">
+        <h1>Vos Mangas</h1>
+        <h6>Retrouvez la liste de vos mangas</h6>
+        <div class="row">
+            <div class="col s7 offset-s1">
+                {% for manga in allManga %}
+                    <div class="col l6 left-align">
+                        <a href="#">
+                            <div class="card hoverable waves-effect waves-block waves-blue" style="height: 500px;">
+                                <div class="card-image">
+                                    <img src="/media/No_picture_available.png" alt="Image Article" style="width:100%; height: 250px">
+                                </div>
+                                <div class="card-content">
+                                    <div class="chip blue white-text">{{ manga.ManDateCreation|title }}</div>
+                                    <span class="span card-title">{{ manga.ManTitre }}<br>par
+                                    {% for utilisateur in manga.utilisateur %}
+                                        <span class="orange-text">{{ utilisateur.id }}</span>
+                                    {% endfor %}
+                                </span>
+                                    <p style="word-break: break-word;">{{ manga.ManContenu|truncate(300,false,"...")|raw }}</p>
+                                </div>
+                                <div class="card-action">
+                                    <a class="waves-effect waves-light #fdd835 yellow darken-1 btn right" href="#"><i class="material-icons left">edit</i></a>
+                                    <a class="waves-effect waves-light #b71c1c red darken-4 btn right modal-trigger" href="#deleteS{{ manga.id }}"><i class="material-icons left">delete</i></a>
+                                    <div id="deleteS{{ manga.id }}" class="modal">
+                                        {{ include("users/users_show/users_show_creations/users_show_manga_deleteform.html.twig") }}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large blue pulse modal-trigger tooltipped" data-position="left" data-tooltip="Créer un manga" href="{{ path("usersManga.addManga", {id:user.id}) }}">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
+
+    </div>
+{% endblock %}

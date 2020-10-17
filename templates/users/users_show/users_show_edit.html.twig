@@ -1,0 +1,29 @@
+<div class="container">
+    <h4 class="center">Mes Posts</h4>
+    <div class="container margin-top center">
+        <a class="waves-effect waves-light btn" href="{{ path("usersScenario.index", {id:user.id}) }}"><i class="material-icons right">library_books</i>Scenario</a>
+        <a class="waves-effect waves-light btn" href="{{ path("usersIllustration.index", {id:user.id}) }}"><i class="material-icons right">insert_photo</i>Illustration</a>
+        <a class="waves-effect waves-light btn" href="{{ path("usersManga.index", {id:user.id}) }}"><i class="material-icons right">local_library</i>Manga</a>
+    </div>
+
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col s12">{{ form_row(form.utiBiographie) }}</div>
+    </div>
+    <div class="row">
+        <div class="col m6 s12">{{ form_row(form.utiMail) }}</div>
+        <div class="col m6 s12">{{ form_row(form.utiNaissance) }}</div>
+    </div>
+    <div class="row">
+        <div class="col m6 s12">{{ form_row(form.utiTelephone) }}</div>
+        <div class="col m6 s12">{{ form_row(form.utiMdp) }}</div>
+    </div>
+    {{ form_rest(form) }}
+    <div class="row">
+        <button class="btn yellow darken-4 waves-effect waves-light col s10 margin-bottom"><i class="material-icons">edit</i> Editer</button>
+        {{ form_end(form) }}
+        <div class="col s1 offset-s1">
+            {{ include('admin/admin_users/admin_users_deleteform.html.twig') }}
+        </div>
+    </div>
+</div>

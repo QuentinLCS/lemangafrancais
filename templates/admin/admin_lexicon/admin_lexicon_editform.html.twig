@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+
+{% endblock %}
+{% block body %}
+    <section class="row">
+        <h3 class="center-align">{{ word.lexMot }} <small class="blue-grey-text">{{ word.lexDefinition }}</small></h3>
+        <div class="blue-grey darken-2 z-depth-1">
+            <div class="container">
+                {{ form_start(form) }}
+                {{ form_rest(form) }}
+                <div class="row">
+                    <button type="submit" class="btn waves-effect waves-light margin-bottom col s12 yellow darken-4">Modifier</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

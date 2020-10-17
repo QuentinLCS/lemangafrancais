@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h3 class="center-align">Mots enregistrés <small class="blue-grey-text">Total : {{ pageLexicons.getTotalItemCount }}</small></h3>
+
+        <div class="row">
+            <div class=" col s10">
+                {{ form_start(searchForm) }}
+                <button class="hiddendiv"></button>
+            </div>
+            <button class="hiddendiv"></button>
+            {{ form_end(searchForm) }}
+        </div>
+
+        <table class="centered blue-grey darken-2 z-depth-1">
+            <thead class="blue-grey darken-4">
+                <tr>
+                    <th>{{ knp_pagination_sortable(pageLexicons, 'Nom', 'l.LexMot') }}</th>
+                    <th>{{ knp_pagination_sortable(pageLexicons, 'Defintion', 'l.LexDefinition') }}</th>
+                    <th>Gestion</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for mot in pageLexicons %}
+                <tr>
+                    <td>{{ mot.lexMot }}</td>
+                    <td>{{ mot.lexDefinition }}</td>
+                    <td>
+                        <a href="{{ path('admin.lexicon.show', {id: mot.id}) }}" class="waves-effect waves-light btn yellow accent-4 tooltipped" data-position="top" data-tooltip="Afficher les détails"><i class="material-icons white-text">edit</i></a>
+                        {{ include('admin/admin_lexicon/admin_lexicon_deleteform.html.twig') }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(pageLexicons) }}
+
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large blue pulse modal-trigger tooltipped" data-position="left" data-tooltip="Ajouter un mot" href="#ajouter">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
+        {{ include('admin/admin_lexicon/admin_lexicon_addform.html.twig') }}
+
+    </section>
+{% endblock %}

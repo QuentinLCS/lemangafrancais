@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Création d\'une Illustration' %}
+{% block body %}
+    <div class="grey lighten-4 center">
+        <h1>Création d'une Illustration</h1>
+        <div class="center container rounded white z-depth-3">
+            <div class="row">
+                <div class="col s12">
+                    {{ form_start(form) }}
+                    {{ form_row(form.illTitre) }}
+                    {{ form_row(form.illContenu) }}
+                    <div style="margin-left:1%;margin-right: 50%">
+                        {{ form_row(form.images) }}
+                    </div><br>
+                    <div class="center">
+                        <button type="submit" class="btn blue waves-effect waves-light">Enregistrer</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

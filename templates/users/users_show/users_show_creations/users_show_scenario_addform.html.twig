@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Création d\'un scénario' %}
+{% block body %}
+    <div class="grey lighten-4 center">
+        <h1>Création d'un Scénario</h1>
+        <div class="center container rounded white z-depth-3">
+            <div class="row">
+                <div class="col s12">
+
+                    {{ form_start(form) }}
+                    {{ form_row(form.sceTitre) }}
+                    {{ form_row(form.sceContenu) }}
+                    <div class="center">
+                        <button type="submit" class="btn blue waves-effect waves-light">Enregistrer</button>
+                    </div>
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

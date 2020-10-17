@@ -1,0 +1,26 @@
+<div class="container">
+    <table class="centered blue-grey darken-2 z-depth-1 margin-top margin-bottom">
+        <thead class="blue-grey darken-4">
+        <tr>
+            <th>Heure</th>
+            <th>Etat</th>
+            <th>Candidat</th>
+            <th>Gestion</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for application in job.candidatures %}
+            <tr>
+                <td>{{ application.canDateString }}</td>
+                <td>{{ application.canEtat }}</td>
+                <td>{{ application.utilisateur.id }}</td>
+                <td>
+                    <a href="{{ path('admin.application.show', {jobId:job.id, slug: job.slug, id:application.id}) }}" class="waves-effect waves-light btn yellow accent-4 tooltipped" data-position="top" data-tooltip="Afficher les détails"><i class="material-icons white-text">remove_red_eye</i></a>
+                    {{ include('admin/admin_recruitment/admin_recruitment_show/admin_recruitment_show_application/admin_recruitment_show_application_deleteform.html.twig') }}
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

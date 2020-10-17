@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title 'LeMangaFrancais | Illustrations' %}
+{% block body %}
+    <div class="grey lighten-4 center">
+        <h1>Les illustrations</h1>
+        <h6>Retrouvez les dernières Illustrations publiées</h6>
+        <div class="row">
+            <div class="col l7 offset-l1">
+                <div class="section left-align">
+                    <h5>Dernières Illustrations</h5>
+                    <div class="divider"></div>
+                </div>
+                {% for page in illustration %}
+                <div class="col l6 left-align">
+                    <a href="{{ path('illustration.show', { id: page.id}) }}">
+                        <div class="card hoverable waves-effect waves-block waves-blue" style="height: 500px;">
+                            <div class="card-image">
+                                <img src="{{ page.images.ImaNomFichier ? vich_uploader_asset(page.images, 'ima_fichier') : "/media/illustrations/default.png" | imagine_filter('illustration_index') }}" alt="Image Article" style="width:100%; height: 250px">
+                            </div>
+                            <div class="card-content">
+                                <div class="chip blue white-text">{{ page.IllDateCreation|title }}</div>
+                                <span class="span card-title">{{ page.IllTitre }}<br>par
+                                    {% for utilisateur in page.utilisateur %}
+                                        <span class="orange-text">{{ utilisateur.id }}</span>
+                                    {% endfor %}
+                                </span>
+                                <p style="word-break: break-word;">{{ page.IllContenu|truncate(300,false,"...")|raw }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

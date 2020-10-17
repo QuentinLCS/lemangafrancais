@@ -1,0 +1,37 @@
+<ul class="sidenav grey darken-4 no-padding" id="mobile">
+    <li>
+        {{ include('global/global_navbar/global_navbar_userinfos.html.twig') }}
+    </li>
+
+    <li><a class="waves-effect waves-light" href="{{ path('home') }}"><i class="material-icons white-text">home</i>Accueil</a></li>
+
+    <li><div class="divider"></div></li>
+
+    <li><a href="{{ path('news.index') }}" class="waves-effect waves-light"><i class="material-icons white-text">star</i>News</a></li>
+    <li>
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header waves-effect waves-light"><i class="material-icons white-text">edit</i>Créations</a>
+                <div class="collapsible-body blue-grey darken-3">
+                    <ul>
+                        <li><a class="waves-effect waves-light" href="{{ path('manga.index') }}">Mangas</a></li>
+                        <li><a class="waves-effect waves-light" href="{{ path('illustration.index') }}">Illustrations</a></li>
+                        <li><a class="waves-effect waves-light" href="{{ path('scenario.index') }}">Scénarios</a></li>
+                        <li class="divider"></li>
+                        <li><a class="waves-effect waves-light" href="{{ path('recruitment.index') }}">Recrutement</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li><a href="{{ path('lexicon.index') }}" class="waves-effect waves-light"><i class="material-icons white-text">bookmark</i>Lexique</a></li>
+    <li><a href="{{ path('support.index') }}" class="waves-effect waves-light"><i class="material-icons white-text">help</i>Support</a></li>
+    <li><a class="blue white-text waves-effect waves-light" href="#store"><i class="material-icons white-text">shopping_cart</i><strong>BOUTIQUE</strong></a></li>
+    <li>
+        {% if app.user %}
+            <a class="red white-text waves-effect waves-light" href="{{ path('signout') }}"><i class="material-icons white-text">close</i><strong>SE DECONNECTER</strong></a>
+        {% else %}
+            <a class="orange white-text waves-effect waves-light" href="{{ path('signin') }}"><i class="material-icons white-text">account_circle</i><strong>SE CONNECTER</strong></a>
+        {% endif %}
+    </li>
+</ul>

@@ -1,0 +1,13 @@
+<div class="container">
+    {{ form_start(form) }}
+
+    {{ form_rest(form) }}
+
+    <div class="row">
+        <button class="btn yellow darken-4 waves-effect waves-light col s10 margin-bottom"><i class="material-icons">edit</i> Editer</button>
+        {{ form_end(form) }}
+        <div class="col s1 offset-s1">
+            {{ include('admin/admin_recruitment/admin_recruitment_deleteform.html.twig') }}
+        </div>
+    </div>
+</div>

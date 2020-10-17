@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Admin' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h3 class="center-align">Suggestions apportées <small class="blue-grey-text">Total : </small></h3>
+        <table class="centered blue-grey darken-2 z-depth-1">
+            <thead class="blue-grey darken-4">
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Gestion</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for suggestion in suggestions %}
+                <tr>
+                    <td>{{ suggestion.id }}</td>
+                    <td>{{ suggestion.sujet }}</td>
+                    <td><a href="{{ path('admin.suggestions.show',{id: suggestion.id}) }}" class="waves-effect waves-light btn yellow accent-4 tooltipped" data-position="top" data-tooltip="Voir"><i class="material-icons white-text">remove_red_eye</i></a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

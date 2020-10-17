@@ -1,0 +1,16 @@
+body {
+    background-color: rgb(55, 71, 79);
+    color: white;
+}
+
+table thead a {
+    color: white;
+}
+
+.card-panel tr, .collapsible tr {
+    border: none;
+}
+
+section {
+    padding: 30px;
+}

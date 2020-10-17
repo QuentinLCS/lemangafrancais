@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | '~job.role.rolNom %}
+
+{% block body %}
+    <div class="container big-margin-top big-margin-bottom grey lighten-4 center" style="margin-top: 5%;">
+        <h4 class="margin-bottom"><strong>Déposer une candidature.</strong></h4>
+        <div class="white z-depth-3 rounded">
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col s12">
+                    {{ form_row(form.canContenu) }}
+                </div>
+            </div>
+            {{ form_row(form._token) }}
+            <button class="btn col s12 blue waves-effect waves-light margin-bottom">POSTULER</button>
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
+    </div>
+{% endblock %}

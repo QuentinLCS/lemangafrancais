@@ -1,0 +1,10 @@
+{
+  "build/admin.css": "/build/admin.css",
+  "build/admin.js": "/build/admin.js",
+  "build/global.css": "/build/global.css",
+  "build/global.js": "/build/global.js",
+  "build/home.css": "/build/home.css",
+  "build/home.js": "/build/home.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors~global~home.js": "/build/vendors~global~home.js"
+}

@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('admin.application.accept', {jobId:application.recrutement.id, slug: application.recrutement.slug, id:application.id}) }}" style="display: inline-block;" class="no-padding">
+    <input type="hidden" name="_method" value="ACCEPT">
+    <input type="hidden" name="_token" value="{{ csrf_token('accept' ~ application.id) }}">
+    <button class="btn green darken-3 waves-effect waves-light tooltipped {{ application.canEtat|upper == 'ACCEPTED' ? 'disabled' : '' }}" data-position="top" data-tooltip="Supprimer"><strong>ACCEPTER</strong></button>
+</form>

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LeMangaFrancais | {% trans %}Home{% endtrans %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="carousel carousel-slider center" id="home-carousel">
+            {% for article in news %}
+                <a class="carousel-item white-text" href="{{ path('news.show', {id:article.id}) }}">
+                    <img src="{{ article.newsPhotoNomFichier ? vich_uploader_asset(article, 'newsPhotoFichier') : "/media/news/default.png" | imagine_filter('news') }}" alt="Illustration de l'article">
+                </a>
+            {% endfor %}
+        </div>
+        
+        <div class="row">
+            <div class="col l6 s12">
+                <a href="#" class="button"></a>
+            </div>
+            <div class="col l6 s12">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('home') }}
+{% endblock %}

@@ -1,0 +1,69 @@
+nav.nav-extended div.nav-wrapper > ul > li {
+    margin-left: 10px;
+}
+
+nav.nav-extended div.nav-wrapper > ul > li:last-child > a {
+    min-width: 325px;
+}
+
+header nav.nav-extended .nav-content .tabs {
+    overflow: visible;
+}
+
+header nav.nav-extended .nav-content .tabs .tab a {
+    overflow: hidden;
+}
+
+header nav.nav-extended .nav-content .index-button .material-icons {
+    line-height: 50px;
+    font-size: 1.5em;
+}
+
+header .dropdown-content li a {
+    line-height: 50px;
+}
+
+.tabs .tab a {
+    color: var(--main-orange-color);
+}
+
+.tabs .tab a:hover {
+    background-color: #ebebeb;
+    color: var(--main-orange-color);
+}
+
+.tabs .tab a.active {
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--main-orange-color);
+}
+
+.tabs .tab a.index-button {
+    background-color: var(--main-orange-color);
+    color: white;
+}
+
+.tabs .indicator {
+    background-color: var(--main-orange-color);
+    height: 3px;
+}
+
+.sidenav li a {
+    color: white;
+}
+
+ul#profile > li:first-child ul {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+ul#profile > li:last-child {
+    position: relative;
+}
+
+
+
+@media screen and (max-width: 400px) {
+    header nav .nav-content .tabs .tab a {
+        font-size: 0.9em;
+    }
+}

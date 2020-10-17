@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Scénarios' %}
+
+{% block body %}
+    <div class="grey lighten-4 center">
+        <h1></h1>
+        <div class="row">
+            <div class="col l7 offset-l1">
+                <div class="section left-align">
+                    <h4><b>{{ illu.illTitre }}</b></h4>
+                    <div class="divider"></div>
+                </div>
+                <div class="white z-depth-3 rounded section big-margin-bottom">
+                    <img src="{{ illu.images.ImaNomFichier ? vich_uploader_asset(illu.images, 'ima_fichier') : "/media/illustrations/default.png" | imagine_filter('illustration_page') }}" alt="Image Article" class=" margin-top margin-bottom z-depth-3" style=" height: 85%; width: 85%;">
+                </div>
+            </div>
+            <div class="col l3">
+                <div class="section left-align">
+                    <h4 class="left-align">Informations</h4>
+                    <div class="divider"></div>
+                </div>
+                <div class="white z-depth-3 rounded section margin-bottom">
+                    <h4>Auteur</h4>
+                    <div class="divider"></div>
+                    {% for utilisateur in illu.utilisateur %}
+                        <h5></h5>
+                        <img src="{{utilisateur.utiAvatarNomFichier ? vich_uploader_asset(app.user, 'utiAvatarFichier') : "/media/users/avatar/default.jpg" | imagine_filter('avatarsmall') }}" alt="" class="circle" style="width: 150px; height: 150px">
+                        <h5><b>{{ utilisateur.id }}</b></h5>
+                        {% for role in utilisateur.utiroles %}
+                            <span class="grey-text">{{ role.rolNom }}</span>
+                        {% endfor %}
+                        <p class="margin-right margin-left"><b>Biographie :</b><br>{{ utilisateur.UtiBiographie }}</p>
+                        <div class="divider"></div>
+                    {% endfor %}
+                    <p><b>Date de publication : </b>{{ illu.illDateCreation }}<br>
+                        <b>Pages : </b>3 <br>
+                        <b>Type : </b>Soupe <br>
+                    </p>
+                    <p><b>Tags : </b>Horreur / Fantaisie</p>
+                </div>
+                <div class="white z-depth-3 rounded section margin-bottom">
+                    <h4>Description</h4>
+                    <div class="divider"></div>
+                    <p>{{ illu.illContenu | raw }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

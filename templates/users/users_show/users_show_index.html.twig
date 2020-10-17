@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'LeMangaFrancais | Profile' %}
+
+{% block body %}
+    <div class="container big-margin-top big-margin-bottom">
+        <h5><strong class="grey-text text-lighten-1">PAGE DE PROFIL</strong></h5>
+        <div class="white z-depth-3 rounded">
+            <div class="center">
+                <img height="200" width="200" class="circle z-depth-3" src="{{ user.utiAvatarNomFichier ? vich_uploader_asset(user, 'utiAvatarFichier') : "/media/users/avatar/default.jpg" | imagine_filter('avatarmedium') }}" alt="Image" style="margin-top: -100px">
+                <h4 style="color: {{ user.utiRoles[0].rolCouleur }}"><strong>{{ user.id|upper }}</strong></h4>
+                <h5 class="grey-text">
+                    <strong>
+                        {% for role in user.utiRoles %}
+                            {{ role.rolNom | upper }}
+                        {% endfor %}
+                    </strong>
+                </h5>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s{{ app.user and app.user.id == user.id ? '4' : '6' }}"><a href="#page1">Informations</a></li>
+                        <li class="tab col s{{ app.user and app.user.id == user.id ? '4' : '6' }}"><a href="#page2">Activités</a></li>
+                        {% if app.user and app.user.id == user.id %}
+                            <li class="tab col s4"><a href="#page3">Editer</a></li>
+                        {% endif %}
+                    </ul>
+                    <div id="page1" class="col s12">{{ include('users/users_show/users_show_infos.html.twig') }}</div>
+                    <div id="page2" class="col s12">{{ include('users/users_show/users_show_activities.html.twig') }}</div>
+                    {% if app.user and app.user.id == user.id %}
+                        <div id="page3" class="col s12">{{ include('users/users_show/users_show_edit.html.twig') }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
